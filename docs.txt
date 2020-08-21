@@ -1,0 +1,9 @@
+ngnix -> react-server -> express server
+                            |       |
+                        postgres  redis
+                                    |
+                                  worker 
+
+redis -> stores all indices and calculated values as key value pairs
+worker -> watches redis for new indices. Pulls each new indice, calculates new value and then puts it back into redis
+postgres -> stores permanent list of all indices that have been received
